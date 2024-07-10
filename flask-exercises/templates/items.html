@@ -1,0 +1,50 @@
+{% for item in items %}
+<li>
+  <span id="text">{{ item[0] }}</span>
+  <button
+    id="edit-button"
+    hx-get="/items/{{ loop.index0 }}"
+    hx-target="#items-list"
+    hx-swap="afterend"
+  >
+    Edit
+  </button>
+  <button
+    hx-delete="/items/{{ loop.index0 }}"
+    hx-target="#items-list"
+    hx-swap="innerHTML"
+  >
+    Delete
+  </button>
+</li>
+{% endfor %}
+<!-- <script>
+  function editBox(button) {
+    var textElement = button.previousElementSibling;
+    if (document.getElementById("edit-button").innerHTML == "Edit") {
+      textElement.setAttribute("contenteditable", "true");
+      textElement.focus();
+      button.textContent = "Save";
+    } else {
+      textElement.setAttribute("contenteditable", "false");
+      button.textContent = "Edit";
+    }
+  }
+
+  function saveChanges(button, newText) {
+    var itemIndex = Array.from(button.parentNode.parentNode.children).indexOf(
+      button.parentNode
+    );
+    fetch(`/items/${itemIndex}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `updated_item=${encodeURIComponent(newText)}`,
+    })
+      .then((response) => response.text())
+      .then((html) => {
+        document.querySelector("#items-list").innerHTML = html;
+      });
+  }
+</script> -->

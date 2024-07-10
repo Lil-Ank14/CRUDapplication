@@ -1,0 +1,10 @@
+<form
+  id="editForm"
+  hx-put="/items/{{ item_id }}"
+  hx-target="#items-list"
+  hx-swap="innerHTML"
+  hx-on::before-request="this.remove()"
+>
+  <input type="text" name="updated_item" value="{{ items[item_id][0] }}" />
+  <input type="submit" />
+</form>

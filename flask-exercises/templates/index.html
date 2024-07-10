@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <style>
+      ul li {
+        margin-bottom: 10px;
+      }
+    </style>
+    <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+  </head>
+  <body>
+    <h1>About</h1>
+    <form
+      id="addForm"
+      hx-post="/items"
+      hx-target="#items-list"
+      hx-swap="innerHTML"
+      hx-on::before-request="this.reset()"
+      hx-disabled-elt="submitBtn"
+    >
+      <input
+        type="text"
+        name="new-item"
+        placeholder="Type new info here"
+        required
+      />
+      <input id="submitBtn" type="submit" />
+    </form>
+    <ul
+      id="items-list"
+      hx-get="/items"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    ></ul>
+  </body>
+</html>
