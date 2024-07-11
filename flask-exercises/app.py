@@ -32,9 +32,10 @@ def delete_item(item_id):
 
 
 @app.get('/items/<int:item_id>')
-def show_edit(item_id):
-    items = db.read_items()
-    return render_template('edit.html', item_id = item_id, items = items)
+def show_editForm(item_id):
+    item_content = db.read_item(item_id)
+    return render_template('edit.html', item_id = item_id, item_content = item_content)
+
 
 @app.put('/items/<int:item_id>')
 def put_item(item_id):
