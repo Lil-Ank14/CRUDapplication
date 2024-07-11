@@ -5,6 +5,12 @@
   hx-swap="innerHTML"
   hx-on::before-request="this.remove()"
 >
-  <input type="text" name="updated_item" value="{{ item_content[0] }}" />
+  <input
+    type="text"
+    name="updated_item"
+    value="{{ item_content[0] }}"
+    placeholder="Type your edits here"
+    required
+  />
   <input type="submit" />
 </form>
