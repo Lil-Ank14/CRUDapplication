@@ -19,7 +19,8 @@ def read_items():
         
     return items
 
-#Reading specific item 
+
+#Reading specific item from table
 def read_item(id):
     with connection.cursor() as cursor:
 
@@ -30,6 +31,7 @@ def read_item(id):
 
         return item
 
+
 #Creating new item and inserting into items table
 def create_item(content):
     with connection.cursor() as cursor: 
@@ -38,22 +40,24 @@ def create_item(content):
         cursor.execute(insert_content, (content,))
 
         connection.commit()
-        
-#Updating specific item 
+
+
+#Updating specific item from table
 def update_item(id, content):
     with connection.cursor() as cursor:
 
-        update = """UPDATE To_Do.items SET content = %s WHERE id = %s"""
-        cursor.execute(update, (content, id))
+        update_content = """UPDATE To_Do.items SET content = %s WHERE id = %s"""
+        cursor.execute(update_content, (content, id))
 
         connection.commit()
-    
-#Deleting specific item
+
+
+#Deleting specific item from table
 def delete_item(id):
     with connection.cursor() as cursor:
 
-        delete = """DELETE FROM To_Do.items WHERE id = %s;"""
-        cursor.execute(delete, (id,))
+        delete_content = """DELETE FROM To_Do.items WHERE id = %s;"""
+        cursor.execute(delete_content, (id,))
         
         connection.commit()
 
