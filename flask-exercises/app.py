@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import db
-import pymysql
+
 
 app = Flask(__name__)
 
